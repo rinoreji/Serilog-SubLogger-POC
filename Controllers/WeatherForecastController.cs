@@ -46,7 +46,7 @@ public class WeatherForecastController : ControllerBase
         }
         _log.LogDebug("slog sample 1");
         _log.LogInformation("slog sample 2");
-        _log.LogWarning("slog sample 3");
+        testmethod();
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -54,5 +54,13 @@ public class WeatherForecastController : ControllerBase
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
         .ToArray();
+    }
+
+    private void testmethod(){
+        newMethod();
+    }
+
+    private void newMethod(){
+        _log.LogWarning("slog sample 3 Trace: {StackTrace}",Environment.StackTrace);
     }
 }
